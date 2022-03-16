@@ -1,6 +1,10 @@
 FILES = src/push_swap.c \
 	src/error.c \
-	src/sortlittle.c
+	src/sortlittle.c \
+	src/swap.c \
+	src/push.c \
+	src/rotate.c \
+	src/rerotate.c
 OBJECT = $(FILES:.c=.o)
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra 
