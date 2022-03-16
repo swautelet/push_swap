@@ -6,21 +6,28 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:51 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/16 14:18:48 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:51:06 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	init_stacka(int *stacka, char **argv, int argc)
+static int	init_stacka(int *stacka, char **argv, int argc)
 {
-	int	i;
+	int		i;
+	char	err;
 
 	i = 0;
-	while (++i <= argc - 1)
+	while (++i <= argc - 2)
 	{
-		stacka[i] = ft_atoi(argv[i]);
+		stacka[i] = ft_atoi(argv[i], &err);
+		if (err == -1)
+		{
+			write(stderr, "Error\nA number is not an int", 29);
+			return (-1);
+		}
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -31,10 +38,23 @@ int	main(int argc, char **argv)
 	if (argc <= 2)
 		return (0);
 	stacka = ft_calloc((argc - 1), sizeof(int));
-	stackb = ft_calloc((argc - 1), sizeof(int));
-	if (stacka == NULL || stackb == NULL)
+	if (stacka == NULL)
+	{
+		write(stderr, "Error\nCan't allocate space", 27);
 		exit (1);
-	init_stacka(stacka, argv, argc);
+	}
+	stackb = ft_calloc((argc - 1), sizeof(int));
+	if (stackb == NULL)
+	{
+		free (stacka);
+		write(stderr, "Error\nCan't allocate space", 27);
+		exit (1);
+	}
+	if (init_stacka(stacka, argv, argc) == 0)
+	{
+		check_error(stacka, argc - 2);
+	}
 	free(stacka);
 	free(stackb);
+	return (0);
 }
