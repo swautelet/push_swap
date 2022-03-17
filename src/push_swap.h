@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/16 17:06:16 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 13:38:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack{
 	ssize_t	*b;
 }	t_stack;
 
-int		check_error(int *stacka, int imax);
+int		check_error(ssize_t *stacka, int imax);
 void	sort(t_stack stack, int size);
 int		issorted(t_stack stack, int imax);
 int		sortlittle(t_stack stack, int size);
@@ -42,5 +42,8 @@ void	do_rr(t_stack stack, int size);
 void	do_rra(t_stack stack, int size);
 void	do_rrb(t_stack stack, int size);
 void	do_rrr(t_stack stack, int size);
+t_stack	copy_stack(t_stack stack, int size);
+int		copy_and_try(t_stack stack, int size, int i);
+void	try(t_stack temp, int size, int i);
 
 #endif
