@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:50:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 15:15:08 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:29:55 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ t_stack	copy_stack(t_stack stack, int size)
 	temp.a = ft_calloc((size), sizeof(ssize_t));
 	if (temp.a == NULL)
 	{
-		write(2, "Error\nCan't allocate space", 27);
+		write(1, "Error\nCan't allocate space", 27);
 		exit (1);
 	}
 	temp.b = ft_calloc((size), sizeof(ssize_t));
 	if (temp.b == NULL)
 	{
 		free (temp.a);
-		write(2, "Error\nCan't allocate space", 27);
+		write(1, "Error\nCan't allocate space", 27);
 		exit (1);
 	}
 	i = -1;
@@ -39,7 +39,7 @@ t_stack	copy_stack(t_stack stack, int size)
 	return (temp);
 }
 
-void	try(t_stack temp, int size, int i)
+void	try(t_stack temp, int size, size_t i)
 {
 	if (i % 12 == 1)
 		do_sa(temp, size);
@@ -67,17 +67,11 @@ void	try(t_stack temp, int size, int i)
 		try(temp, size, i / 12);
 }
 
-t_stack	copy_and_try(t_stack stack, int size, int i)
+t_stack	copy_and_try(t_stack stack, int size, size_t i)
 {
 	t_stack	temp;
-	// int	j;
 
 	temp = copy_stack(stack, size);
 	try (temp, size, i);
-	// j = -1;
-	// while (++j <= 3)
-	// {
-		// printf("stack.a[%d] = %zd	stack.b[%d] = %zd\n", j, temp.a[j], j, temp.b[j]);
-	// }
 	return (temp);
 }

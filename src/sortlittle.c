@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 15:14:56 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:28:03 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,27 @@ int	issorted(t_stack stack, int imax)
 
 int	sortlittle(t_stack stack, int size)
 {
-	int		i;
+	size_t	i;
 	t_stack	temp;
+	// int		j;
 
 	i = -1;
 	while (++i < INT_MAX)
 	{
 		temp = copy_and_try(stack, size, i);
 		if (issorted(temp, size - 1) == 0)
+		{
+			// j = -1;
+			// while (++j < size)
+			// {
+				// printf("stack.a[%d] = %zd stack.b[%d] = %zd\n", j, temp.a[j], j, temp.b[j]);
+			// }
+			free(temp.a);
+			free(temp.b);
 			return (i);
+		}
+		free(temp.a);
+		free(temp.b);
 	}
 	return (-1);
 }
@@ -76,9 +88,9 @@ void	sort(t_stack stack, int size)
 
 	if (issorted(stack, size - 1) == 0)
 		return ;
-	// if (size <= 5)
-	// {
+	if (size <= 5)
+	{
 		sol = sortlittle(stack, size);
 		print_soluce(sol);
-	// }
+	}
 }
