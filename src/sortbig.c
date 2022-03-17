@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sortbig.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 19:58:22 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 23:12:15 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	firstdivide(t_stack stack, int size, ssize_t mid)
 	printf("%zd\n", mid);
 	if ((mid + INT_MAX) / 3 != mid)
 		firstdivide(stack, size, (mid + INT_MAX) / 3);
-	bigsort(stack, size, mid);
+	//bigsort(stack, size, mid);
 }
 
 void	sort_stacka(t_stack stack, int size)
