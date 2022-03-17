@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:36:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/16 17:07:20 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:14:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	do_pa(t_stack stack, int size)
 		stack.b[i] = stack.b[i + 1];
 		i++;
 	}
+	stack.b[i] = EMPTY;
 }
 
 void	do_pb(t_stack stack, int size)
@@ -54,4 +55,5 @@ void	do_pb(t_stack stack, int size)
 		stack.a[i] = stack.a[i + 1];
 		i++;
 	}
+	stack.a[i] = EMPTY;
 }

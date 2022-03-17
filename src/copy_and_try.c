@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:50:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 13:46:30 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:15:08 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,14 @@ void	try(t_stack temp, int size, int i)
 t_stack	copy_and_try(t_stack stack, int size, int i)
 {
 	t_stack	temp;
+	// int	j;
 
 	temp = copy_stack(stack, size);
 	try (temp, size, i);
+	// j = -1;
+	// while (++j <= 3)
+	// {
+		// printf("stack.a[%d] = %zd	stack.b[%d] = %zd\n", j, temp.a[j], j, temp.b[j]);
+	// }
 	return (temp);
 }
