@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 16:28:03 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:51:16 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	issorted(t_stack stack, int imax)
 
 int	sortlittle(t_stack stack, int size)
 {
-	size_t	i;
+	int		i;
 	t_stack	temp;
 	// int		j;
 
