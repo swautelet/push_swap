@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 13:48:41 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:08:56 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	issorted(t_stack stack, int imax)
 	int	i;
 
 	i = -1;
-	while (++i < imax)
+	while (++i <= imax)
 	{
 		if (stack.a[i] > stack.a[i + 1])
 			return (1);
