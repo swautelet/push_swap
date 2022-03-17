@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 17:13:43 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:03:59 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,6 @@ void	sort(t_stack stack, int size)
 		sol = sortlittle(stack, size);
 		print_soluce(sol);
 	}
+	else
+		sortbig(stack, size);
 }

@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 16:52:01 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 19:41:34 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ void	do_rrr(t_stack stack, int size);
 t_stack	copy_stack(t_stack stack, int size);
 t_stack	copy_and_try(t_stack stack, int size, int i);
 void	try(t_stack temp, int size, int i);
+void	sortbig(t_stack stack, int size);
+void	bigsort(t_stack stack, int size, ssize_t mid);
+void	sort_stacka(t_stack stack, int size);
+void	firstdivide(t_stack stack, int size, ssize_t mid);
 
 #endif

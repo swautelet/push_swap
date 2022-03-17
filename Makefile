@@ -5,7 +5,8 @@ FILES = src/push_swap.c \
 	src/push.c \
 	src/rotate.c \
 	src/rerotate.c \
-	src/copy_and_try.c
+	src/copy_and_try.c \
+	src/sortbig.c
 OBJECT = $(FILES:.c=.o)
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra 
