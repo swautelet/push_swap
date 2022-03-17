@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:33:22 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 13:37:36 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 13:49:55 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	check_error(ssize_t *stacka, int imax)
 		while (++j < i)
 		{
 			if (stacka[i] == stacka[j])
+			{
+				write(2, "Error\nThere's a double", 23);
 				return (-1);
+			}
 		}
 	}
 	return (0);

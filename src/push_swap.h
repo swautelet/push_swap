@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 13:38:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 13:47:14 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	do_rra(t_stack stack, int size);
 void	do_rrb(t_stack stack, int size);
 void	do_rrr(t_stack stack, int size);
 t_stack	copy_stack(t_stack stack, int size);
-int		copy_and_try(t_stack stack, int size, int i);
+t_stack	copy_and_try(t_stack stack, int size, int i);
 void	try(t_stack temp, int size, int i);
 
 #endif

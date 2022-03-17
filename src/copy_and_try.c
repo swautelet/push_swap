@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:50:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 13:42:10 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/17 13:46:30 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void	try(t_stack temp, int size, int i)
 		try(temp, size, i / 12);
 }
 
-int	copy_and_try(t_stack stack, int size, int i)
+t_stack	copy_and_try(t_stack stack, int size, int i)
 {
 	t_stack	temp;
 
 	temp = copy_stack(stack, size);
 	try (temp, size, i);
-	return (0);
+	return (temp);
 }
