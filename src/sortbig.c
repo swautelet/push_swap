@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/18 14:12:27 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:09:42 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,35 @@
 
 void	firstdivide(t_stack stack, int size, t_lim limits)
 {
-	ssize_t	last;
+	ssize_t	mina;
+	int		i;
 
-	last = stack.a[size - 1];
-	while (stack.a[0] != last)
+	mina = limits.mid - 1;
+	while (mina < limits.mid)
 	{
+		i = -1;
+		mina = stack.a[0];
+		while (stack.a[++i] != EMPTY)
+		{
+			if (stack.a[i] < mina)
+				mina = stack.a[i];
+		}
 		if (stack.a[0] < limits.mid && stack.a[2] != EMPTY)
 		{
 			do_pb(stack, size);
 			write(1, "pb\n", 3);
 		}
-		if (stack.a[0] >= limits.mid && stack.a[2] != EMPTY)
+		else if (stack.a[0] >= limits.mid && stack.a[2] != EMPTY)
 		{
 			do_ra(stack, size);
 			write(1, "ra\n", 3);
 		}
 	}
-	// printf("%zd\n", mid);
 	if (stack.a[2] != EMPTY)
 	{
-		limits.mid = (limits.mid + limits.max) / 2;
+		limits.mid += (limits.max - limits.mid) / 2;
 		firstdivide(stack, size, limits);
 	}
-	bigsort(stack, size, limits);
 }
 
 void	sort_stacka(t_stack stack, int size)
@@ -133,9 +139,10 @@ void	sortbig(t_stack stack, int size)
 	}
 	limits.mid = (limits.min + limits.max) / 2;
 	firstdivide(stack, size, limits);
-	i = -1;
-	while (++i < size)
-	{
-		printf("stacka[%d] = %zd				stackb[%d] = %zd\n", i, stack.a[i], i, stack.b[i]);
-	}
+	bigsort(stack, size, limits);
+	// i = -1;
+	// while (++i < size)
+	// {
+		// printf("stacka[%d] = %zd				stackb[%d] = %zd\n", i, stack.a[i], i, stack.b[i]);
+	// }
 }
