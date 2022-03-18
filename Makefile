@@ -33,9 +33,7 @@ fclean : clean
 re : fclean all
 
 save : 
-	make fclean -C libft
-	git add $(FILES) $(HEADER) Makefile libft/
-	git commit -m autosave
+	git commit -am autosave
 	git push https://github.com/swautelet/push_swap.git
 
 .phony : save re fclean clean all
