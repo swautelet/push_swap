@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/18 14:07:14 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:49:38 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# define EMPTY LONG_MAX
+# define EMPTY LONG_MIN
 
 typedef struct s_stack{
 	ssize_t	*a;
@@ -53,7 +53,7 @@ t_stack	copy_and_try(t_stack stack, int size, int i);
 void	try(t_stack temp, int size, int i);
 void	sortbig(t_stack stack, int size);
 void	bigsort(t_stack stack, int size, t_lim limits);
-void	sort_stacka(t_stack stack, int size);
+void	sort_stacka(t_stack stack, int size, t_lim limits);
 void	firstdivide(t_stack stack, int size, t_lim limits);
 
 #endif

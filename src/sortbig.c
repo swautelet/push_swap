@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/18 15:09:42 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:11:27 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	firstdivide(t_stack stack, int size, t_lim limits)
 	int		i;
 
 	mina = limits.mid - 1;
-	while (mina < limits.mid)
+	while (mina < limits.mid && stack.a[2] != EMPTY)
 	{
 		i = -1;
 		mina = stack.a[0];
@@ -27,8 +27,18 @@ void	firstdivide(t_stack stack, int size, t_lim limits)
 			if (stack.a[i] < mina)
 				mina = stack.a[i];
 		}
+		if (stack.a[0] > stack.a[1] && stack.a[0] < limits.mid)
+		{
+			do_sa(stack, size);
+			write(1, "sa\n", 3);
+		}
 		if (stack.a[0] < limits.mid && stack.a[2] != EMPTY)
 		{
+			// i = -1;
+			// while (++i < size)
+			// {
+				// printf("stacka[%d] = %zd				stackb[%d] = %zd	mina = %zd limits.mid = %zd\n", i, stack.a[i], i, stack.b[i], mina, limits.mid);
+			// }
 			do_pb(stack, size);
 			write(1, "pb\n", 3);
 		}
@@ -38,59 +48,45 @@ void	firstdivide(t_stack stack, int size, t_lim limits)
 			write(1, "ra\n", 3);
 		}
 	}
+	// printf("limits.mid = %zd limits.max = %zd\n", limits.mid, limits.max);
 	if (stack.a[2] != EMPTY)
 	{
-		limits.mid += (limits.max - limits.mid) / 2;
+		limits.mid += (limits.max - limits.mid) / 3;
 		firstdivide(stack, size, limits);
+		bigsort(stack, size, limits);
 	}
 }
 
-void	sort_stacka(t_stack stack, int size)
+void	sort_stacka(t_stack stack, int size, t_lim limits)
 {
-	int	i;
-	int	t;
-
-	i = -1;
-	while (stack.a[++i + 1] != EMPTY)
+	while (stack.a[0] != limits.min)
 	{
-		if (stack.a[i] > stack.a[i + 1])
-		{
-			t = 0;
-			while (t <= i)
-			{
-				do_ra(stack, size);
-				write(1, "ra\n", 3);
-				t++;
-			}
-			do_sa(stack, size);
-			write(1, "sa\n", 3);
-			while (t >= 0)
-			{
-				do_rra(stack, size);
-				write(1, "rra\n", 4);
-				t--;
-			}
-			i = -1;
-		}
+		do_ra(stack, size);
+		write(1, "ra\n", 3);
 	}
 }
 
 void	bigsort(t_stack stack, int size, t_lim limits)
 {
-	int	lasta;
 	int	lastb;
+	int	lasta;
+	// int	i;
 
-	(void)limits;
-	// printf("test\n");
-	lasta = 0;
-	while (stack.a[lasta + 1] != EMPTY)
-		lasta++;
 	lastb = 0;
 	while (stack.b[lastb + 1] != EMPTY)
 		lastb++;
-	while (stack.b[0] != EMPTY)
+	lasta = 0;
+	while (stack.a[lasta + 1] != EMPTY)
+		lasta++;
+	// printf("limits.mid = %zd lasta = %d	lastb = %d stackb[0] = %zd stackb[lastb] = %zd\n", limits.mid, lasta, lastb, stack.b[0], stack.b[lastb]);
+	while (stack.b[0] >= limits.mid || stack.b[lastb] >= limits.mid)
 	{
-		if (stack.b[lastb] > stack.b[0] && stack.b[lastb] < stack.a[lasta])
+		// i = -1;
+		// while (++i < size)
+		// {
+			// printf("stacka[%d] = %zd				stackb[%d] = %zd\n", i, stack.a[i], i, stack.b[i]);
+		// }
+		if (stack.b[lastb] > stack.b[0] && stack.b[lastb] < stack.a[lasta] && stack.a[lasta] < stack.a[0])
 		{
 			do_rrr(stack, size);
 			write(1, "rrr\n", 4);
@@ -100,26 +96,44 @@ void	bigsort(t_stack stack, int size, t_lim limits)
 			do_rr(stack, size);
 			write(1, "rr\n", 3);
 		}
-		else if (stack.b[0] > stack.a[0])
+		else if (stack.b[0] < stack.b[1] && stack.b[1] != EMPTY)
 		{
-			do_ra(stack, size);
-			write(1, "ra\n", 3);
+			do_rb(stack, size);
+			write(1, "rb\n", 3);
 		}
-		else if (stack.b[0] < stack.a[lasta] && stack.a[lasta] < stack.a[0])
+		else if (stack.b[0] < stack.b[lastb] && stack.b[0] != EMPTY)
+		{
+			do_rrb(stack, size);
+			write(1, "rrb\n", 4);
+		}
+		else if (stack.b[0] < stack.a[0] && stack.a[0] < stack.a[lasta])
+		{
+			do_pa(stack, size);
+			write(1, "pa\n", 3);
+			lastb--;
+			lasta++;
+		}
+		else if (stack.b[0] < stack.a[0] && stack.b[0] < stack.a[lasta] && stack.a[lasta] < stack.a[0])
 		{
 			do_rra(stack, size);
 			write(1, "rra\n", 4);
 		}
-		else if (stack.b[0] < stack.a[0] && (stack.a[0] < stack.a[lasta]
-				|| stack.b[0] > stack.a[lasta]))
+		else if (stack.b[0] > stack.a[0])
+		{
+			// printf("test\n");
+			do_ra(stack, size);
+			write(1, "ra\n", 3);
+		}
+		else if (stack.b[0] < stack.a[0] && stack.b[0] > stack.a[lasta])
 		{
 			do_pa(stack, size);
 			write(1, "pa\n", 3);
-			lasta++;
 			lastb--;
+			lasta++;
 		}
+		else
+			break ;
 	}
-	// sort_stacka(stack, size);
 }
 
 void	sortbig(t_stack stack, int size)
@@ -137,9 +151,18 @@ void	sortbig(t_stack stack, int size)
 		if (stack.a[i] > limits.max)
 			limits.max = stack.a[i];
 	}
-	limits.mid = (limits.min + limits.max) / 2;
+	limits.mid = (limits.min + limits.max) / 3;
 	firstdivide(stack, size, limits);
 	bigsort(stack, size, limits);
+	while (limits.mid != (limits.mid + limits.min) / 3)
+	{
+		limits.mid = (limits.mid + limits.min) / 3;
+		bigsort(stack, size, limits);
+	}
+	// sort_stacka(stack, size, limits);
+	limits.mid = limits.min -1;
+	bigsort(stack, size, limits);
+	// printf("limits.mid = %zd  stackb[0] = %zd\n", limits.mid, stack.b[0]);
 	// i = -1;
 	// while (++i < size)
 	// {
