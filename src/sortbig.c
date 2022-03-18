@@ -3,36 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   sortbig.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 23:12:15 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/03/18 12:24:24 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	firstdivide(t_stack stack, int size, ssize_t mid)
+void	firstdivide(t_stack stack, int size, t_lim limits)
 {
 	ssize_t	last;
 
 	last = stack.a[size - 1];
 	while (stack.a[0] != last)
 	{
-		if (stack.a[0] < mid)
+		if (stack.a[0] < limits.mid)
 		{
 			do_pb(stack, size);
 			write(1, "pb\n", 3);
 		}
-		if (stack.a[0] >= mid)
+		if (stack.a[0] >= limits.mid)
 		{
 			do_ra(stack, size);
 			write(1, "ra\n", 3);
 		}
 	}
-	printf("%zd\n", mid);
-	if ((mid + INT_MAX) / 3 != mid)
-		firstdivide(stack, size, (mid + INT_MAX) / 3);
+	// printf("%zd\n", mid);
+	if (stack.b[2] != EMPTY)
+	{
+		limits.mid = (limits.mid + limits.max) / 2;
+		firstdivide(stack, size, limits);
+	}
 	//bigsort(stack, size, mid);
 }
 
@@ -78,12 +81,21 @@ void	bigsort(t_stack stack, int size, ssize_t mid)
 
 void	sortbig(t_stack stack, int size)
 {
-	ssize_t	mid;
+	t_lim	limits;
 	int		i;
 
-	i = 0;
-	mid = 0;
-	firstdivide(stack, size, mid);
+	i = -1;
+	limits.min = stack.a[0];
+	limits.max = stack.a[0];
+	while (++i < size)
+	{
+		if (stack.a[i] < limits.min)
+			limits.min = stack.a[i];
+		if (stack.a[i] > limits.max)
+			limits.max = stack.a[i];
+	}
+	limits.mid = (limits.min + limits.max) / 2;
+	firstdivide(stack, size, limits);
 	i = -1;
 	while (++i < size)
 	{

@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/18 11:45:33 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:21:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_stack{
 	ssize_t	*a;
 	ssize_t	*b;
 }	t_stack;
+
+typedef struct s_lim{
+	ssize_t	mid;
+	ssize_t	min;
+	ssize_t	max;
+}	t_lim;
 
 int		check_error(ssize_t *stacka, int imax);
 void	sort(t_stack stack, int size);
@@ -48,6 +54,6 @@ void	try(t_stack temp, int size, int i);
 void	sortbig(t_stack stack, int size);
 void	bigsort(t_stack stack, int size, ssize_t mid);
 void	sort_stacka(t_stack stack, int size);
-void	firstdivide(t_stack stack, int size, ssize_t mid);
+void	firstdivide(t_stack stack, int size, t_lim limits);
 
 #endif
