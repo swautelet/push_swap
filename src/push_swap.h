@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/18 16:49:38 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/21 18:45:36 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	sortbig(t_stack stack, int size);
 void	bigsort(t_stack stack, int size, t_lim limits);
 void	sort_stacka(t_stack stack, int size, t_lim limits);
 void	firstdivide(t_stack stack, int size, t_lim limits);
+void	secondsort(t_stack stack, int size, t_lim limits);
+int		mini_stacka_issorted(t_stack stack, int size, t_lim limits);
 
 #endif
