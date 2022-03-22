@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 18:23:44 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:25:22 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,12 @@ void	firstdivide(t_stack stack, int size, t_lim limits, t_stack sorted)
 			if (stack.a[i] < mina)
 				mina = stack.a[i];
 		}
-		if (stack.a[0] > stack.a[1] && stack.a[0] < limits.mid && stack.a[1] < limits.mid && stack.b[0] < stack.b[1])
+		if (stack.a[0] > stack.a[1] && stack.a[0] < limits.mid
+			&& stack.a[1] < limits.mid && stack.b[0] < stack.b[1])
 		{
 			do_ss(stack, size);
 			write(1, "ss\n", 3);
 		}
-		// else if (stack.a[0] > stack.a[1] && stack.a[0] < limits.mid && stack.a[1] < limits.mid)
-		// {
-			// do_sa(stack, size);
-			// write(1, "sa\n", 3);
-		// }
-		// else if (stack.b[0] < stack.b[1])
-		// {
-			// do_sb(stack, size);
-			// write(1, "sb\n", 3);
-		// }
 		if (stack.a[0] <= limits.mid && stack.a[2] != EMPTY)
 		{
 			do_pb(stack, size);
@@ -62,44 +53,44 @@ void	firstdivide(t_stack stack, int size, t_lim limits, t_stack sorted)
 	}
 }
 
-int	mini_stacka_issorted(t_stack stack, int size, t_lim limits)
-{
-	int	i;
+// int	mini_stacka_issorted(t_stack stack, int size, t_lim limits)
+// {
+// 	int	i;
 
-	i = 0;
-	while (stack.a[i] != EMPTY && stack.a[i + 1] != EMPTY && i + 1 < size
-		&& stack.a[i + 1] < limits.max)
-	{
-		if (stack.a[i] > stack.a[i + 1])
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (stack.a[i] != EMPTY && stack.a[i + 1] != EMPTY && i + 1 < size
+// 		&& stack.a[i + 1] < limits.max)
+// 	{
+// 		if (stack.a[i] > stack.a[i + 1])
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
-void	sort_stacka(t_stack stack, int size, t_lim limits)
-{
-	if (stack.a[0] > stack.a[1])
-	{
-		do_sa(stack, size);
-		write(1, "sa\n", 3);
-	}
-	if (mini_stacka_issorted(stack, size, limits) != 0)
-	{
-		do_ra(stack, size);
-		write(1, "ra\n", 3);
-		sort_stacka(stack, size, limits);
-		if (stack.a[0] > stack.a[1])
-		{
-			do_sa(stack, size);
-			write(1, "sa\n", 3);
-		}
-		do_rra(stack, size);
-		write(1, "rra\n", 4);
-		if (mini_stacka_issorted(stack, size, limits) != 0)
-			sort_stacka(stack, size, limits);
-	}
-}
+// void	sort_stacka(t_stack stack, int size, t_lim limits)
+// {
+// 	if (stack.a[0] > stack.a[1])
+// 	{
+// 		do_sa(stack, size);
+// 		write(1, "sa\n", 3);
+// 	}
+// 	if (mini_stacka_issorted(stack, size, limits) != 0)
+// 	{
+// 		do_ra(stack, size);
+// 		write(1, "ra\n", 3);
+// 		sort_stacka(stack, size, limits);
+// 		if (stack.a[0] > stack.a[1])
+// 		{
+// 			do_sa(stack, size);
+// 			write(1, "sa\n", 3);
+// 		}
+// 		do_rra(stack, size);
+// 		write(1, "rra\n", 4);
+// 		if (mini_stacka_issorted(stack, size, limits) != 0)
+// 			sort_stacka(stack, size, limits);
+// 	}
+// }
 
 void	bigsort(t_stack stack, int size, t_lim limits)
 {
@@ -114,7 +105,8 @@ void	bigsort(t_stack stack, int size, t_lim limits)
 		lasta++;
 	while (stack.b[0] >= limits.mid || stack.b[lastb] >= limits.mid)
 	{
-		if (stack.b[lastb] > stack.b[0] && stack.b[lastb] < stack.a[lasta] && stack.a[lasta] < stack.a[0])
+		if (stack.b[lastb] > stack.b[0] && stack.b[lastb] < stack.a[lasta]
+			&& stack.a[lasta] < stack.a[0])
 		{
 			do_rrr(stack, size);
 			write(1, "rrr\n", 4);
@@ -134,7 +126,8 @@ void	bigsort(t_stack stack, int size, t_lim limits)
 			do_rrb(stack, size);
 			write(1, "rrb\n", 4);
 		}
-		else if (stack.b[0] < stack.a[0] && stack.b[0] < stack.a[lasta] && stack.a[lasta] < stack.a[0])
+		else if (stack.b[0] < stack.a[0] && stack.b[0] < stack.a[lasta]
+			&& stack.a[lasta] < stack.a[0])
 		{
 			do_rra(stack, size);
 			write(1, "rra\n", 4);
@@ -144,7 +137,8 @@ void	bigsort(t_stack stack, int size, t_lim limits)
 			do_ra(stack, size);
 			write(1, "ra\n", 3);
 		}
-		else if (stack.b[0] < stack.a[0] && (stack.b[0] > stack.a[lasta] || stack.a[0] < stack.a[lasta]))
+		else if (stack.b[0] < stack.a[0] && (stack.b[0] > stack.a[lasta]
+				|| stack.a[0] < stack.a[lasta]))
 		{
 			do_pa(stack, size);
 			write(1, "pa\n", 3);
@@ -156,41 +150,41 @@ void	bigsort(t_stack stack, int size, t_lim limits)
 	}
 }
 
-void	secondsort(t_stack stack, int size, t_lim limits)
-{
-	ssize_t	last;
-	int		lastb;
+// void	secondsort(t_stack stack, int size, t_lim limits)
+// {
+// 	ssize_t	last;
+// 	int		lastb;
 
-	limits.mid -= (limits.mid - limits.min) / 2;
-	lastb = 0;
-	while (stack.b[lastb + 1] != EMPTY)
-		lastb++;
-	last = stack.b[lastb];
-	while (stack.b[0] != last)
-	{
-		if (stack.b[0] > limits.mid)
-		{
-			do_pa(stack, size);
-			write(1, "pa\n", 3);
-		}
-		else
-		{
-			do_rb(stack, size);
-			write(1, "rb\n", 3);
-		}
-	}
-	if (stack.b[0] > limits.mid)
-	{
-		do_pa(stack, size);
-		write(1, "pa\n", 3);
-	}
-	if ((limits.mid - limits.min) / 2 > 0)
-	{
-		sort_stacka(stack, size, limits);
-		limits.mid -= (limits.mid - limits.min) / 2;
-		secondsort(stack, size, limits);
-	}
-}
+// 	limits.mid -= (limits.mid - limits.min) / 2;
+// 	lastb = 0;
+// 	while (stack.b[lastb + 1] != EMPTY)
+// 		lastb++;
+// 	last = stack.b[lastb];
+// 	while (stack.b[0] != last)
+// 	{
+// 		if (stack.b[0] > limits.mid)
+// 		{
+// 			do_pa(stack, size);
+// 			write(1, "pa\n", 3);
+// 		}
+// 		else
+// 		{
+// 			do_rb(stack, size);
+// 			write(1, "rb\n", 3);
+// 		}
+// 	}
+// 	if (stack.b[0] > limits.mid)
+// 	{
+// 		do_pa(stack, size);
+// 		write(1, "pa\n", 3);
+// 	}
+// 	if ((limits.mid - limits.min) / 2 > 0)
+// 	{
+// 		sort_stacka(stack, size, limits);
+// 		limits.mid -= (limits.mid - limits.min) / 2;
+// 		secondsort(stack, size, limits);
+// 	}
+// }
 
 t_stack	virtualsort(t_stack stack, int size, t_lim limits)
 {
@@ -208,7 +202,8 @@ t_stack	virtualsort(t_stack stack, int size, t_lim limits)
 		i = -1;
 		while (++i < size)
 		{
-			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY && sorted.a[i] != limits.min)
+			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY
+				&& sorted.a[i] != limits.min)
 				limits.mid = sorted.a[i];
 		}
 		i = -1;
@@ -242,7 +237,6 @@ void	sortbig(t_stack stack, int size)
 	sorted = virtualsort(stack, size, limits);
 	limits.ipiv = size / 2;
 	limits.mid = sorted.b[limits.ipiv];
-	// limits.mid = 0;
 	firstdivide(stack, size, limits, sorted);
 	bigsort(stack, size, limits);
 	while (limits.ipiv != 1)
@@ -255,18 +249,4 @@ void	sortbig(t_stack stack, int size)
 	bigsort(stack, size, limits);
 	free (sorted.a);
 	free (sorted.b);
-	// secondsort(stack, size, limits);
-	// while (stack.b[0] != EMPTY)
-	// {
-		// do_pa(stack, size);
-		// write(1, "pa\n", 3);
-	// }
-	// limits.mid = limits.min - 1;
-	// sort_stacka(stack, size, limits);
-	// printf("limits.mid = %zd  stackb[0] = %zd\n", limits.mid, stack.b[0]);
-	// i = -1;
-	// while (++i < size)
-	// {
-		// printf("stacka[%d] = %zd				stackb[%d] = %zd\n", i, stack.a[i], i, stack.b[i]);
-	// }
 }

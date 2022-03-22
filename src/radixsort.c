@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:54:57 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 19:07:43 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:22:20 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,6 @@ void	radix_sort(t_stack stack, int size, int decal)
 			do_pa(stack, size);
 			write(1, "pa\n", 3);
 		}
-		i = -1;
-		while (++i < size)
-		{
-			printf("stack.a[%d] = %zd		stack.b[%d] = %zd issorted = %d size = %d\n", i, stack.a[i], i, stack.b[i], issorted(stack, size - 1), size);
-		}
 		decal++;
 	}
 	return ;
@@ -85,16 +80,8 @@ void	very_big_sort(t_stack stack, int size)
 			limits.max = stack.a[i];
 	}
 	sorted = virtualsort(stack, size, limits);
-	// while (++i < size)
-		// printf("sorted.b = %zd\n", sorted.b[i]);
 	convertstack(stack, size, sorted);
 	radix_sort(stack, size, 0);
-	i = -1;
-	while (++i < size)
-	i = -1;
-	{
-		printf("stack.a[%d] = %zd		stack.b[%d] = %zd\n", i, stack.a[i], i, stack.b[i]);
-	}
 	free (sorted.a);
 	free (sorted.b);
 }

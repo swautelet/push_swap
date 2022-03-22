@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 18:27:58 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:22:04 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	sortlittle(t_stack stack, int size, int i)
 				&& (i / 12) % 12 == 11))
 			i++;
 		temp = copy_and_try(stack, size, i);
-		if (issorted(temp, size - 1) == 0)
+		if (issorted(temp, size) == 0)
 		{
 			free(temp.a);
 			free(temp.b);
@@ -83,7 +83,7 @@ void	sort(t_stack stack, int size)
 {
 	int	sol;
 
-	if (issorted(stack, size - 1) == 0)
+	if (issorted(stack, size) == 0)
 		return ;
 	if (size < 5)
 	{

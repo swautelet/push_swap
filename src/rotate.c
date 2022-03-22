@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:36:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 16:27:45 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:22:54 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	do_ra(t_stack stack, int size)
 {
 	ssize_t	temp;
 	int		i;
-	// int		j;
 
-	// j = -1;
-	// while (++j < size)
-		// printf("before ra stack.a[%d] = %zd 		stack.b[%d] = %zd\n", j, stack.a[j], j, stack.b[j]);
 	if (stack.a[0] == EMPTY)
 		return ;
 	i = -1;
@@ -31,9 +27,6 @@ void	do_ra(t_stack stack, int size)
 	}
 	i--;
 	stack.a[i] = temp;
-	// j = -1;
-	// while (++j < size)
-		// printf("after ra stack.a[%d] = %zd 		stack.b[%d] = %zd\n", j, stack.a[j], j, stack.b[j]);
 }
 
 void	do_rb(t_stack stack, int size)
