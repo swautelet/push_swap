@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 16:19:47 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:23:44 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ t_stack	virtualsort(t_stack stack, int size, t_lim limits)
 		i = -1;
 		while (++i < size)
 		{
-			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY)
+			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY && sorted.a[i] != limits.min)
 				limits.mid = sorted.a[i];
 		}
 		i = -1;
@@ -253,6 +253,8 @@ void	sortbig(t_stack stack, int size)
 	}
 	limits.mid = limits.min -1;
 	bigsort(stack, size, limits);
+	free (sorted.a);
+	free (sorted.b);
 	// secondsort(stack, size, limits);
 	// while (stack.b[0] != EMPTY)
 	// {

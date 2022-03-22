@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 16:03:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:28:35 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_lim{
 	int		ipiv;
 }	t_lim;
 
-int		check_error(ssize_t *stacka, int imax);
+int		check_error(ssize_t *stacka, int size);
 void	sort(t_stack stack, int size);
-int		issorted(t_stack stack, int imax);
+int		issorted(t_stack stack, int size);
 int		sortlittle(t_stack stack, int size, int i);
 void	do_sa(t_stack stack, int size);
 void	do_sb(t_stack stack, int size);
@@ -59,5 +59,7 @@ void	firstdivide(t_stack stack, int size, t_lim limits, t_stack sorted);
 void	secondsort(t_stack stack, int size, t_lim limits);
 int		mini_stacka_issorted(t_stack stack, int size, t_lim limits);
 t_stack	virtualsort(t_stack stack, int size, t_lim limits);
+void	very_big_sort(t_stack stack, int size);
+void	convertstack(t_stack stack, int size, t_stack sorted);
 
 #endif

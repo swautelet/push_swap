@@ -6,20 +6,20 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/18 11:56:16 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:27:58 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	issorted(t_stack stack, int imax)
+int	issorted(t_stack stack, int size)
 {
 	int	i;
 
-	i = -1;
-	while (++i <= imax)
+	i = 0;
+	while (++i < size)
 	{
-		if (stack.a[i] > stack.a[i + 1])
+		if (stack.a[i - 1] > stack.a[i])
 			return (1);
 		if (stack.b[i] != EMPTY)
 			return (2);
@@ -99,6 +99,8 @@ void	sort(t_stack stack, int size)
 		sol = sortlittle(stack, size, 1728);
 		print_soluce(sol);
 	}
-	else
+	else if (size < 200)
 		sortbig(stack, size);
+	else
+		very_big_sort(stack, size);
 }
