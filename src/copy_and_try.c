@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:50:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 15:01:06 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:06:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	copy_stack(t_stack stack, int size)
 	temp.a = ft_calloc((size), sizeof(ssize_t));
 	if (temp.a == NULL)
 	{
-		write(1, "Error\nCan't allocate space", 27);
+		write(2, "Error\nCan't allocate space", 27);
 		free_stack(stack);
 		exit (1);
 	}
@@ -35,7 +35,7 @@ t_stack	copy_stack(t_stack stack, int size)
 	{
 		free_stack(stack);
 		free (temp.a);
-		write(1, "Error\nCan't allocate space", 27);
+		write(2, "Error\nCan't allocate space", 27);
 		exit (1);
 	}
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:34:44 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 13:03:38 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:06:49 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_stack(t_stack stack, char **argv, int argc)
 		stack.a[i - 1] = ft_atoi(argv[i], &err);
 		if (err == -1)
 		{
-			write(1, "Error\nA number is not an int", 29);
+			write(2, "Error\nA number is not an int", 29);
 			return (-1);
 		}
 		stack.b[i - 1] = EMPTY;

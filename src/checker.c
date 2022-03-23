@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:31:25 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 16:12:37 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:06:27 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	read_and_do(t_stack stack, int size)
 			break ;
 		if (do_on_stack(stack, size, buffer) != 0)
 		{
-			write (1, "Error\n", 6);
+			write (2, "Error\n", 6);
 			free (stack.a);
 			free (stack.b);
 			free (buffer);
@@ -92,14 +92,14 @@ int	main(int argc, char **argv)
 	stack.a = ft_calloc((argc - 1), sizeof(ssize_t));
 	if (stack.a == NULL)
 	{
-		write(1, "Error\nCan't allocate space", 27);
+		write(2, "Error\nCan't allocate space", 27);
 		exit (1);
 	}
 	stack.b = ft_calloc((argc - 1), sizeof(ssize_t));
 	if (stack.b == NULL)
 	{
 		free (stack.a);
-		write(1, "Error\nCan't allocate space", 27);
+		write(2, "Error\nCan't allocate space", 27);
 		exit (1);
 	}
 	if (init_stack(stack, argv, argc) == 0)
