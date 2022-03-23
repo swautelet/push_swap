@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:31:25 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 14:57:01 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:58:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ static void	read_and_do(t_stack stack, int size)
 		buffer = get_next_line(0);
 		if (buffer == NULL)
 			break ;
-		// printf("len = %d\n", len);
-		// write(1, buffer, len);
 		if (do_on_stack(stack, size, buffer) != 0)
 		{
 			write (1, "Error\n", 6);
