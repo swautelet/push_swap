@@ -31,7 +31,7 @@ OBJECTB = $(FILESB:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
-	make bonus -C libft
+	make -C libft
 	$(CC) $(CFLAGS) $(OBJECT) $(LIB) -o $(NAME)
 
 .o : .c
@@ -51,8 +51,8 @@ re : fclean all
 rebonus : fclean bonus
 
 $(NAMEB) : $(OBJECTB)
-	make bonus -C libft
-	$(CC) $(CFLAGS) $(OBJECTB) $(LIB) -o $(NAME)
+	make -C libft
+	$(CC) $(CFLAGS) $(OBJECTB) $(LIB) -o $(NAMEB)
 
 bonus : $(NAMEB)
 
