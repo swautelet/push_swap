@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 15:29:05 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:46:08 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,32 @@ t_stack	virtualsort(t_stack stack, int size, t_lim limits)
 	int		towr;
 
 	sorted = copy_stack(stack, size);
-	towr = 0;
+	towr = -1;
 	limits.mid = limits.min;
 	sorted.b[towr] = limits.mid;
-	while (limits.mid != limits.max)
+	while (limits.mid != limits.max && ++towr < INT_MAX)
 	{
 		limits.mid = limits.max;
 		i = -1;
 		while (++i < size)
-		{
 			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY
 				&& sorted.a[i] != limits.min)
 				limits.mid = sorted.a[i];
-		}
 		i = -1;
 		while (++i < size)
 		{
 			if (sorted.a[i] == limits.mid)
 				sorted.a[i] = EMPTY;
 		}
-		towr++;
 		sorted.b[towr] = limits.mid;
 	}
 	return (sorted);
 }
 
-void	sortbig(t_stack stack, int size)
+static t_lim	init_limits(t_stack stack, int size)
 {
-	t_lim	limits;
 	int		i;
-	t_stack	sorted;
+	t_lim	limits;
 
 	i = -1;
 	limits.min = stack.a[0];
@@ -60,6 +56,15 @@ void	sortbig(t_stack stack, int size)
 		if (stack.a[i] > limits.max)
 			limits.max = stack.a[i];
 	}
+	return (limits);
+}
+
+void	sortbig(t_stack stack, int size)
+{
+	t_lim	limits;
+	t_stack	sorted;
+
+	limits = init_limits(stack, size);
 	sorted = virtualsort(stack, size, limits);
 	limits.ipiv = size / 2;
 	limits.mid = sorted.b[limits.ipiv];
