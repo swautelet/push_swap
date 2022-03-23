@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 14:50:55 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:31:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef struct s_lim{
 	ssize_t	max;
 	int		ipiv;
 }	t_lim;
+
+typedef struct s_last{
+	int	a;
+	int	b;
+}	t_last;
 
 int		check_error(ssize_t *stacka, int size);
 void	sort(t_stack stack, int size);

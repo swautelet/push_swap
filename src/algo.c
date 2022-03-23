@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:28:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 15:28:57 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:40:52 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,40 +99,51 @@ void	firstdivide(t_stack stack, int size, t_lim limits, t_stack sorted)
 	}
 }
 
+static t_last	init_last(t_stack stack, t_last last, int size, int flag)
+{
+	if (flag == 0)
+	{
+		last.b = 0;
+		while (stack.b[last.b + 1] != EMPTY)
+			last.b++;
+		last.a = 0;
+		while (stack.a[last.a + 1] != EMPTY)
+			last.a++;
+		return (last);
+	}
+	if (flag == 1)
+	{
+		do_write(stack, size, 9);
+		last.b--;
+		last.a++;
+	}
+	return (last);
+}
+
 void	bigsort(t_stack stack, int size, t_lim limits)
 {
-	int	lastb;
-	int	lasta;
+	t_last	last;
 
-	lastb = 0;
-	while (stack.b[lastb + 1] != EMPTY)
-		lastb++;
-	lasta = 0;
-	while (stack.a[lasta + 1] != EMPTY)
-		lasta++;
-	while (stack.b[0] >= limits.mid || stack.b[lastb] >= limits.mid)
+	last = init_last(stack, last, size, 0);
+	while (stack.b[0] >= limits.mid || stack.b[last.b] >= limits.mid)
 	{
-		if (stack.b[lastb] > stack.b[0] && stack.b[lastb] < stack.a[lasta]
-			&& stack.a[lasta] < stack.a[0])
+		if (stack.b[last.b] > stack.b[0] && stack.b[last.b] < stack.a[last.a]
+			&& stack.a[last.a] < stack.a[0])
 			do_and_write(stack, size, 3);
 		else if (stack.b[0] < stack.b[1] && stack.b[0] > stack.a[0])
 			do_and_write(stack, size, 4);
 		else if (stack.b[0] < stack.b[1] && stack.b[1] != EMPTY)
 			do_write(stack, size, 5);
-		else if (stack.b[0] < stack.b[lastb] && stack.b[0] != EMPTY)
+		else if (stack.b[0] < stack.b[last.b] && stack.b[0] != EMPTY)
 			do_write(stack, size, 6);
-		else if (stack.b[0] < stack.a[0] && stack.b[0] < stack.a[lasta]
-			&& stack.a[lasta] < stack.a[0])
+		else if (stack.b[0] < stack.a[0] && stack.b[0] < stack.a[last.a]
+			&& stack.a[last.a] < stack.a[0])
 			do_write(stack, size, 7);
 		else if (stack.b[0] > stack.a[0])
 			do_write(stack, size, 8);
-		else if (stack.b[0] < stack.a[0] && (stack.b[0] > stack.a[lasta]
-				|| stack.a[0] < stack.a[lasta]))
-		{
-			do_write(stack, size, 9);
-			lastb--;
-			lasta++;
-		}
+		else if (stack.b[0] < stack.a[0] && (stack.b[0] > stack.a[last.a]
+				|| stack.a[0] < stack.a[last.a]))
+			last = init_last(stack, last, size, 1);
 		else
 			break ;
 	}
