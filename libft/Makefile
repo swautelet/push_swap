@@ -45,9 +45,10 @@ BONUS = ft_lstnew.c \
 			ft_lstmap.c
 OBJECTB = $(BONUS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
+AR = ar
+ARFLAGS = rcs
 
-all : $(OBJECT) $(NAME)($(OBJECT))
+all : $(NAME)($(OBJECT))
 
 clean :
 	rm -f $(OBJECT) $(OBJECTB)
@@ -62,15 +63,10 @@ save : fclean
 	git commit -m autosave
 	git push git@vogsphere-v2.s19.be:vogsphere/intra-uuid-9255c91c-fe38-4871-93e0-cc59b0b7a5a0-3851762
 
-bonus : all $(OBJECTB) $(NAME)($(OBJECTB))
-
 %.o : %.c
 	gcc -c $(CFLAGS) $?
 
-$(NAME)($(OBJECT)) : 
-	$(AR) $(NAME) $%
-
-$(NAME)($(OBJECTB)) : 
-	$(AR) $(NAME) $%
+$(NAME) : $(OBJECT) $(OBJECTB)
+	$(AR) $(NAME) $?
 
 .PHONY: all clean fclean save bonus re
