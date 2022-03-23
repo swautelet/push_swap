@@ -8,7 +8,8 @@ FILES = src/push_swap.c \
 	src/copy_and_try.c \
 	src/sortbig.c \
 	src/radixsort.c \
-	src/push_swap_utils.c
+	src/push_swap_utils.c \
+	src/algo.c
 OBJECT = $(FILES:.c=.o)
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra 
