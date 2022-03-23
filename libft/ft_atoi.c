@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:38:37 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 17:57:34 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:15:12 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ int	ft_atoi(const char *str, char *flagerr)
 
 	nb = 0;
 	*flagerr = 0;
-	// while (*str == ' ' || *str == '\f' || *str == '\n'
-		// || *str == '\r' || *str == '\t' || *str == '\v')
-	// {
-		// str++;
-	// }
 	s = ft_sign(str);
 	if (*str == '+' || *str == '-')
 		str++;
