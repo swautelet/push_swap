@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:43:07 by swautele          #+#    #+#             */
-/*   Updated: 2021/09/30 18:37:08 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/03/23 13:56:51 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

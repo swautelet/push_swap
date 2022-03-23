@@ -22,7 +22,9 @@ FILESB = src/checker.c \
 	src/rotate.c \
 	src/swap.c \
 	src/push_swap_utils.c \
-	src/error.c
+	src/error.c \
+	src/get_next_line.c \
+	src/get_next_line_utils.c
 OBJECTB = $(FILESB:.c=.o)
 all : $(NAME)
 
@@ -35,14 +37,19 @@ $(NAME) : $(OBJECT)
 
 clean :
 	rm -f $(OBJECT)
+	rm -f $(OBJECTB)
 
 fclean : clean 
 	make fclean -C libft
 	rm -f $(NAME)
+	rm -f $(NAMEB)
 
 re : fclean all
 
+rebonus : fclean bonus
+
 bonus : $(OBJECTB)
+	make bonus -C libft
 	$(CC) $(CFLAGS) $(OBJECTB) $(LIB) -o $(NAMEB)
 
 save : 

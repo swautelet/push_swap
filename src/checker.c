@@ -6,13 +6,29 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:31:25 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 13:37:16 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:57:01 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	do_on_stack(t_stack stack, int size, char buffer[10])
+// static int	f_strcmp(char *str1, char *str2)
+// {
+// 	if (str1 == NULL && str2 == NULL)
+// 		return (0);
+// 	if (str1 == NULL || str2 == NULL)
+// 		return (-1000);
+// 	while (*str2)
+// 	{
+// 		str1++;
+// 		str2++;
+// 		if (*str1 != *str2)
+// 			return ((unsigned char)*str1 - (unsigned char )*str2);
+// 	}
+// 	return ((unsigned char)*str1 - (unsigned char )*str2);
+// }
+
+static int	do_on_stack(t_stack stack, int size, char *buffer)
 {
 	if (ft_strncmp(buffer, "sa\n", 3) == 0)
 		do_sa(stack, size);
@@ -43,18 +59,25 @@ static int	do_on_stack(t_stack stack, int size, char buffer[10])
 
 static void	read_and_do(t_stack stack, int size)
 {
-	int		len;
-	char	buffer[10];
+	char	*buffer;
 
-	len = 1;
-	while (len)
+	buffer = "fuck";
+	while (buffer != NULL)
 	{
-		len = read(0, buffer, len);
+		buffer = get_next_line(0);
+		if (buffer == NULL)
+			break ;
+		// printf("len = %d\n", len);
+		// write(1, buffer, len);
 		if (do_on_stack(stack, size, buffer) != 0)
 		{
 			write (1, "Error\n", 6);
-			break ;
+			free (stack.a);
+			free (stack.b);
+			free (buffer);
+			exit (1);
 		}
+		free (buffer);
 	}
 	if (issorted(stack, size) == 0)
 		write(1, "ok\n", 3);

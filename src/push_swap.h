@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 13:03:50 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:50:55 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <limits.h>
 # define EMPTY LONG_MIN
+# include "get_next_line.h"
 
 typedef struct s_stack{
 	ssize_t	*a;
