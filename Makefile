@@ -27,6 +27,7 @@ FILESB = src/checker.c \
 	src/get_next_line.c \
 	src/get_next_line_utils.c
 OBJECTB = $(FILESB:.c=.o)
+
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
@@ -49,9 +50,11 @@ re : fclean all
 
 rebonus : fclean bonus
 
-bonus : $(OBJECTB)
+$(NAMEB) : $(OBJECTB)
 	make bonus -C libft
-	$(CC) $(CFLAGS) $(OBJECTB) $(LIB) -o $(NAMEB)
+	$(CC) $(CFLAGS) $(OBJECTB) $(LIB) -o $(NAME)
+
+bonus : $(NAMEB)
 
 save : 
 	git commit -am autosave

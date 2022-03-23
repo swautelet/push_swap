@@ -67,7 +67,7 @@ bonus : all $(OBJECTB) $(NAME)($(OBJECTB))
 %.o : %.c
 	gcc -c $(CFLAGS) $?
 
-$(NAME)($(OBJECT)) :
+$(NAME)($(OBJECT)) : 
 	$(AR) $(NAME) $%
 
 $(NAME)($(OBJECTB)) : 
