@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:31:25 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 14:58:43 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:12:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ static void	read_and_do(t_stack stack, int size)
 		free (buffer);
 	}
 	if (issorted(stack, size) == 0)
-		write(1, "ok\n", 3);
+		write(1, "OK\n", 3);
 	else
-		write(1, "ko\n", 3);
+		write(1, "KO\n", 3);
 }
 
 int	main(int argc, char **argv)

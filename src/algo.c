@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:28:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 16:01:55 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 17:44:05 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ void	firstdivide(t_stack stack, int size, t_lim limits, t_stack sorted)
 				mina = stack.a[i];
 		if (stack.a[0] > stack.a[1] && stack.b[0] < stack.b[1])
 			do_and_write(stack, size, 0);
-		if (stack.a[0] <= limits.mid && stack.a[2] != EMPTY)
+		else if (stack.a[0] <= limits.mid && stack.a[2] != EMPTY)
 			do_and_write(stack, size, 1);
 		else if (stack.a[0] > limits.mid && stack.a[2] != EMPTY)
 			do_and_write(stack, size, 2);
 	}
 	if (stack.a[2] != EMPTY)
 	{
-		limits.ipiv = (limits.ipiv + size) / 2;
+		limits.ipiv += (size - limits.ipiv) / 2;
 		limits.mid = sorted.b[limits.ipiv];
 		firstdivide(stack, size, limits, sorted);
 		bigsort(stack, size, limits);

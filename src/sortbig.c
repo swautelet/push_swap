@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 15:46:08 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 17:30:21 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ t_stack	virtualsort(t_stack stack, int size, t_lim limits)
 	sorted = copy_stack(stack, size);
 	towr = -1;
 	limits.mid = limits.min;
-	sorted.b[towr] = limits.mid;
 	while (limits.mid != limits.max && ++towr < INT_MAX)
 	{
 		limits.mid = limits.max;
 		i = -1;
 		while (++i < size)
-			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY
-				&& sorted.a[i] != limits.min)
+			if (sorted.a[i] < limits.mid && sorted.a[i] != EMPTY)
 				limits.mid = sorted.a[i];
 		i = -1;
 		while (++i < size)
@@ -67,7 +65,7 @@ void	sortbig(t_stack stack, int size)
 	limits = init_limits(stack, size);
 	sorted = virtualsort(stack, size, limits);
 	limits.ipiv = size / 2;
-	limits.mid = sorted.b[limits.ipiv];
+	limits.mid = sorted.b[limits.ipiv - 1];
 	firstdivide(stack, size, limits, sorted);
 	bigsort(stack, size, limits);
 	while (limits.ipiv != 1)
