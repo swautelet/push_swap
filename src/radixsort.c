@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:54:57 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 20:22:20 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:02:51 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	radix_sort(t_stack stack, int size, int decal)
 {
 	int	i;
 
-	while (issorted(stack, size) != 0)
+	while (issorted(stack, size) != 0 && ++decal < INT_MAX)
 	{
-		i = 0;
-		while (i < size)
+		i = -1;
+		while (++i < size)
 		{
 			if ((((stack.a[0] >> decal) & 1) % 2) == 0)
 			{
@@ -51,14 +51,12 @@ void	radix_sort(t_stack stack, int size, int decal)
 				do_ra(stack, size);
 				write(1, "ra\n", 3);
 			}
-			i++;
 		}
 		while (stack.b[0] != EMPTY)
 		{
 			do_pa(stack, size);
 			write(1, "pa\n", 3);
 		}
-		decal++;
 	}
 	return ;
 }
@@ -81,7 +79,7 @@ void	very_big_sort(t_stack stack, int size)
 	}
 	sorted = virtualsort(stack, size, limits);
 	convertstack(stack, size, sorted);
-	radix_sort(stack, size, 0);
+	radix_sort(stack, size, -1);
 	free (sorted.a);
 	free (sorted.b);
 }

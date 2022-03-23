@@ -6,11 +6,17 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:50:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 20:20:36 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:01:06 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	free_stack(t_stack stack)
+{
+	free (stack.a);
+	free (stack.b);
+}
 
 t_stack	copy_stack(t_stack stack, int size)
 {
@@ -21,15 +27,13 @@ t_stack	copy_stack(t_stack stack, int size)
 	if (temp.a == NULL)
 	{
 		write(1, "Error\nCan't allocate space", 27);
-		free (stack.a);
-		free (stack.b);
+		free_stack(stack);
 		exit (1);
 	}
 	temp.b = ft_calloc((size), sizeof(ssize_t));
 	if (temp.b == NULL)
 	{
-		free (stack.a);
-		free (stack.b);
+		free_stack(stack);
 		free (temp.a);
 		write(1, "Error\nCan't allocate space", 27);
 		exit (1);
