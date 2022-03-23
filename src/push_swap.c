@@ -6,30 +6,11 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:51 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/17 16:29:03 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:35:35 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	init_stack(t_stack stack, char **argv, int argc)
-{
-	int		i;
-	char	err;
-
-	i = 0;
-	while (++i <= argc - 1)
-	{
-		stack.a[i - 1] = ft_atoi(argv[i], &err);
-		if (err == -1)
-		{
-			write(1, "Error\nA number is not an int", 29);
-			return (-1);
-		}
-		stack.b[i - 1] = EMPTY;
-	}
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {

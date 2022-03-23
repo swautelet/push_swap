@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:48 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 18:28:35 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:03:50 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int		mini_stacka_issorted(t_stack stack, int size, t_lim limits);
 t_stack	virtualsort(t_stack stack, int size, t_lim limits);
 void	very_big_sort(t_stack stack, int size);
 void	convertstack(t_stack stack, int size, t_stack sorted);
+int		init_stack(t_stack stack, char **argv, int argc);
 
 #endif

@@ -6,26 +6,11 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:58:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/22 19:22:04 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:36:01 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	issorted(t_stack stack, int size)
-{
-	int	i;
-
-	i = 0;
-	while (++i < size)
-	{
-		if (stack.a[i - 1] > stack.a[i])
-			return (1);
-		if (stack.b[i] != EMPTY)
-			return (2);
-	}
-	return (0);
-}
 
 int	sortlittle(t_stack stack, int size, int i)
 {
