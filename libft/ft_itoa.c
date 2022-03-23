@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:39:55 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 19:07:11 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/23 19:07:18 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	ft_len(unsigned int n)
 		l++;
 		n = n / 10;
 	}
-	lol;
 	return (l);
 }
 
