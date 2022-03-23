@@ -28,7 +28,7 @@ FILESB = src/checker.c \
 	src/get_next_line_utils.c
 OBJECTB = $(FILESB:.c=.o)
 
-all : $(NAME)
+all : $(NAME) $(NAMEB)
 
 $(NAME) : $(OBJECT)
 	make -C libft
