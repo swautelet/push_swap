@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:04:26 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 17:30:21 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:12:06 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	sortbig(t_stack stack, int size)
 
 	limits = init_limits(stack, size);
 	sorted = virtualsort(stack, size, limits);
-	limits.ipiv = size / 2;
+	limits.ipiv = size / 4;
 	limits.mid = sorted.b[limits.ipiv - 1];
 	firstdivide(stack, size, limits, sorted);
 	bigsort(stack, size, limits);
-	while (limits.ipiv != 1)
+	while (limits.ipiv != limits.ipiv / 4)
 	{
-		limits.ipiv = limits.ipiv / 2;
+		limits.ipiv = limits.ipiv / 4;
 		limits.mid = sorted.b[limits.ipiv];
 		bigsort(stack, size, limits);
 	}
