@@ -12,7 +12,7 @@ FILES = src/push_swap.c \
 	src/algo.c
 OBJECT = $(FILES:.c=.o)
 CC = gcc
-CFLAGS = -Werror -Wall -Wextra 
+CFLAGS = -Werror -Wall -Wextra -g
 NAME = push_swap
 HEADER = src/push_swap.h
 LIB = libft/libft.a

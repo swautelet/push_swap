@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:28:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/28 12:11:08 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:54:51 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	firstdivide(t_stack stack, int size, t_lim limits, t_stack sorted)
 	{
 		i = -1;
 		mina = stack.a[0];
-		while (stack.a[++i] != EMPTY)
+		while (stack.a[++i] != EMPTY && i < size - 1)
 			if (stack.a[i] < mina)
 				mina = stack.a[i];
 		if (stack.a[0] > stack.a[1] && stack.b[0] < stack.b[1])
@@ -106,10 +106,10 @@ static t_last	init_last(t_stack stack, int size, int flag)
 	if (flag == 1)
 		do_write(stack, size, 9);
 	last.b = 0;
-	while (stack.b[last.b + 1] != EMPTY)
+	while (stack.b[last.b + 1] != EMPTY && last.b + 2 < size)
 		last.b++;
 	last.a = 0;
-	while (stack.a[last.a + 1] != EMPTY)
+	while (stack.a[last.a + 1] != EMPTY && last.a + 2 < size)
 		last.a++;
 	return (last);
 }
