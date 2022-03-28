@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:58:51 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/28 13:28:53 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/28 13:47:10 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
-	if (argc <= 2)
+	if (argc <= 1)
 		return (0);
 	stack.a = ft_calloc((argc), sizeof(ssize_t));
 	if (stack.a == NULL)
