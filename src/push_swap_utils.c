@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:34:44 by swautele          #+#    #+#             */
-/*   Updated: 2022/03/23 18:06:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/03/28 13:30:32 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	init_stack(t_stack stack, char **argv, int argc)
 		}
 		stack.b[i - 1] = EMPTY;
 	}
+	stack.a[i - 1] = EMPTY;
+	stack.b[i - 1] = EMPTY;
 	return (0);
 }
 
