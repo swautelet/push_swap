@@ -5,8 +5,7 @@
 ```bash
 git clone https://github.com/swautelet/push_swap.git && cd push_swap && make && ./push_swap "0" "5" "2" "1" "4" 
 ```
-
-<img src="https://github.com/swautelet/push_swap/media/perf100.gif" width="400" height="250"> <img src="https://github.com/swautelet/push_swap/media/perf500.gif" width="400" height="250">
+you can then test with any suit of number little or big other than the first given.
 
 ## Topics -- 🗝
 
