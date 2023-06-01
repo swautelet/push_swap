@@ -35,9 +35,15 @@ Sorting values is simple. Sort them the fastest way possible is less simple. The
 
 - **8** instructions on average for a stack of **5** integers
 
+done with an optimized brutforce to find the best solution
+
 - **700** instructions on average for a stack of **100** integers
 
+done with a personalized algorithm inspired by quicksort
+
 - **5000** instructions on average for a stack of **500** integers
+
+done with a radixsort algorithm
 
 
 ## Rules -- 🚨
